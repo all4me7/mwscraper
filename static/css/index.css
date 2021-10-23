@@ -1,0 +1,138 @@
+* {
+    text-align: center;
+}
+
+html {
+    height: 100%;
+}
+
+.fullContainer {
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.4vmax;
+    font-family: "Trebuchet MS";
+    cursor: default;
+    color: #2ecc71;
+}
+
+p {
+    font-size: 1vmax;
+    font-family: "Trebuchet MS";
+    color: #2ecc71;
+}
+
+.container1 {
+    margin-top: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
+    border-width: 1px;
+    border-color: #CCCCCC;
+    background-color: #FFFFFF;
+    color: #000000;
+    border-style: solid;
+    border-radius: 0px;
+    box-shadow: 0px 0px 5px rgba(66, 66, 66, .75);
+    outline: 0;
+    overflow-y: scroll;
+    height: 62vh;
+}
+
+.container2 {
+    text-align: center;
+    height: 18vh;
+}
+
+.inputField {
+    width: 40vmax;
+    height: 2vmax;
+    padding: 5px;
+    font-size: 1vmax;
+    border-width: 1px;
+    border-color: #CCCCCC;
+    background-color: #FFFFFF;
+    color: #000000;
+    border-style: solid;
+    border-radius: 0px;
+    box-shadow: 0px 0px 5px rgba(66, 66, 66, .75);
+    outline: 0;
+    margin-bottom: 1%;
+    font-family: "Trebuchet MS";
+    border-bottom: 0.3vmax solid #2ecc71;
+}
+
+.inputField::placeholder {
+    font-size: 1vmax;
+    opacity: 30%;
+    font-family: "Trebuchet MS";
+}
+
+.inputField2 {
+    width: 10vmax;
+    height: 2vmax;
+    padding: 5px;
+    font-size: 1vmax;
+    border-width: 1px;
+    border-color: #CCCCCC;
+    background-color: #FFFFFF;
+    color: #000000;
+    border-style: solid;
+    border-radius: 0px;
+    box-shadow: 0px 0px 5px rgba(66, 66, 66, .75);
+    outline: 0;
+    margin-bottom: 1%;
+    font-family: "Trebuchet MS";
+    border-bottom: 0.3vmax solid #2ecc71;
+}
+
+.inputField2::placeholder {
+    font-size: 1vmax;
+    opacity: 30%;
+    font-family: "Trebuchet MS";
+}
+
+.inputField2:read-only {
+    border-bottom: none;
+}
+
+.approveButton {
+    width: 5vmax;
+    height: 2vmax;
+    font-size: 1vmax;
+    padding: 0;
+    border-width: 0;
+    outline: none;
+    border-radius: 2px;
+    box-shadow: 0px 0px 5px rgba(66, 66, 66, .75);
+    background-color: #2ecc71;
+    color: white;
+    transition: background-color .3s;
+    font-family: "Trebuchet MS";
+    cursor: pointer;
+}
+
+.approveButton:hover {
+    background: linear-gradient(to bottom, #e4685d 5%, #fc8d83 100%);
+    background-color: #e4685d;
+}
+
+.approveButton:active {
+    position: relative;
+    top: 1px;
+}
+
+ul {
+    outline: 0;
+    border-radius: 4px;
+    text-align: left;
+}
+
+li {
+    text-align: left;
+    word-wrap: break-word;
+    list-style-type: circle;
+    font-family: "Trebuchet MS";
+    font-size: 1vmax;
+    
+}
