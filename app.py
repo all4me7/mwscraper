@@ -29,6 +29,7 @@ def main():
             response = req.get(url)
             soup = BeautifulSoup(response.content, 'html.parser')
 
+            # TAG
             if len(url) != 0 and len(tag) != 0 and len(atr) == 0 and len(val) == 0:
                 if tag.endswith('*'):
                     tag = tag.removesuffix('*')
@@ -40,6 +41,7 @@ def main():
                     for single_tag in scraped_tags:
                         list_tag.append(single_tag)
 
+            # ATTRIBUTE
             elif len(url) != 0 and len(tag) != 0 and len(atr) != 0 and len(val) == 0:
                 if atr.endswith('$'):
                     atr = atr.removesuffix('$')
@@ -55,7 +57,8 @@ def main():
                     scraped_tags = soup.find_all(tag, attrs={atr: True})
                     for single_tag in scraped_tags:
                         list_tag.append(single_tag)    
-                    
+            
+            # ATTRIBUTE VALUE 
             elif len(url) != 0 and len(tag) != 0 and len(atr) != 0 and len(val) != 0:
                 if val.endswith('*'):
                     val = val.removesuffix('*')
