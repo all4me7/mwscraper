@@ -12,6 +12,10 @@ def home():
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
+    # VARIABLES
+    list_tag = []
+
+    # GET VALUES FROM HTML 
     if request.method == 'POST':
         if 'approve' in request.form:
             url = request.form['url']
@@ -19,13 +23,13 @@ def main():
             atr = request.form['attribute']
             val = request.form['value']
 
-            list_tag = []
-
+            # FIXING URL'S 
             if url.startswith('https://'):
                 pass
             else:
                 url = 'https://' + url
 
+            # SOUP SETUP
             response = req.get(url)
             soup = BeautifulSoup(response.content, 'html.parser')
 
@@ -71,7 +75,8 @@ def main():
                         list_tag.append(single_tag)  
             else:
                 pass
-                
+
+        # USED TAGS/ATTRIBUTES/VALUES LABEL        
         used_tags = f'{tag} {atr} {val}'
             
     return render_template('index.html', list_tag=list_tag, url=url, used_tags=used_tags)
