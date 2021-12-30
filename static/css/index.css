@@ -98,7 +98,7 @@ a {
 }
 
 .inputField2:read-only {
-    border-bottom: 0.3vmax solid #ef5350;
+    border-bottom: 0.3vmax solid #e0e0e0;
 }
 
 .approveButton {
@@ -138,5 +138,4 @@ li {
     list-style-type: circle;
     font-family: "Trebuchet MS";
     font-size: 1vmax;
-    
 }
