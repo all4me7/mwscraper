@@ -16,7 +16,11 @@
             <div class="container1">
                 <ul>
                     {% for tag in list_tag %}
-                    <li>{{ tag }}</li>
+                        {% if tag.startswith("https://") %}
+                            <li><a href="{{ tag }}" target="_blank">{{ tag }}</a></li>
+                        {% else %}
+                            <li>{{ tag }}</li>
+                        {% endif %}
                     {% endfor %}
                 </ul>
             </div>
