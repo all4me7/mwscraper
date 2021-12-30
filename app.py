@@ -20,6 +20,7 @@ def main():
     hyperlinks = []
     dead_links = []
     name_list = []
+    value_list = []
     protocol = "https://"
     
 
@@ -59,7 +60,7 @@ def main():
                     atr = atr.removesuffix('$')
                     scraped_tags = soup.find_all(tag, attrs={atr: True})
                     for single_tag in scraped_tags:
-                        list_tag.append(single_tag[atr])
+                        value_list.append(single_tag[atr])
                 elif atr.endswith('#'):
                     atr = atr.removesuffix('#')
                     scraped_tags = [x[atr] for x in soup.find_all(tag, attrs={atr: True})]
@@ -89,7 +90,7 @@ def main():
                     atr = atr.removesuffix('*')
                     scraped_tags = soup.find_all(tag, attrs={atr: True})
                     for single_tag in scraped_tags:
-                        list_tag.append(single_tag.text)
+                        name_list.append(single_tag.text)
                 else:
                     scraped_tags = soup.find_all(tag, attrs={atr: True})
                     for single_tag in scraped_tags:
@@ -101,7 +102,7 @@ def main():
                     val = val.removesuffix('*')
                     scraped_tags = soup.find_all(tag, attrs={atr: val})
                     for single_tag in scraped_tags:
-                        list_tag.append(single_tag.text)
+                        name_list.append(single_tag.text)
                 else:
                     scraped_tags = soup.find_all(tag, attrs={atr: val})
                     for single_tag in scraped_tags:
@@ -112,7 +113,16 @@ def main():
         # USED TAGS/ATTRIBUTES/VALUES LABEL        
         used_tags = f'{tag} {atr} {val}'
             
-    return render_template('index.html', list_tag=list_tag, name_list=name_list, url=url, used_tags=used_tags, dead_links=dead_links, hyperlinks=hyperlinks)
+    return render_template(
+        'index.html', 
+        list_tag = list_tag, 
+        name_list = name_list, 
+        value_list = value_list, 
+        url = url, 
+        used_tags = used_tags, 
+        dead_links = dead_links, 
+        hyperlinks = hyperlinks
+        )
     
 
 if __name__ == '__main__':
