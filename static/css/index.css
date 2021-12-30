@@ -14,13 +14,13 @@ h2 {
     font-size: 1.4vmax;
     font-family: "Trebuchet MS";
     cursor: default;
-    color: #2ecc71;
+    color: #66bb6a;
 }
 
 p {
     font-size: 1vmax;
     font-family: "Trebuchet MS";
-    color: #2ecc71;
+    color: #66bb6a;
 }
 
 .container1 {
@@ -33,7 +33,7 @@ p {
     color: #000000;
     border-style: solid;
     border-radius: 0px;
-    box-shadow: 0px 0px 5px rgba(66, 66, 66, .75);
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
     outline: 0;
     overflow-y: auto;
     height: 62vh;
@@ -55,11 +55,11 @@ p {
     color: #000000;
     border-style: solid;
     border-radius: 0px;
-    box-shadow: 0px 0px 5px rgba(66, 66, 66, .75);
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
     outline: 0;
     margin-bottom: 1%;
     font-family: "Trebuchet MS";
-    border-bottom: 0.3vmax solid #2ecc71;
+    border-bottom: 0.3vmax solid #66bb6a;
 }
 
 .inputField::placeholder {
@@ -79,11 +79,11 @@ p {
     color: #000000;
     border-style: solid;
     border-radius: 0px;
-    box-shadow: 0px 0px 5px rgba(66, 66, 66, .75);
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
     outline: 0;
     margin-bottom: 1%;
     font-family: "Trebuchet MS";
-    border-bottom: 0.3vmax solid #2ecc71;
+    border-bottom: 0.3vmax solid #66bb6a;
 }
 
 .inputField2::placeholder {
@@ -93,7 +93,7 @@ p {
 }
 
 .inputField2:read-only {
-    border-bottom: none;
+    border-bottom: 0.3vmax solid #ef5350;
 }
 
 .approveButton {
@@ -105,7 +105,7 @@ p {
     outline: none;
     border-radius: 2px;
     box-shadow: 0px 0px 5px rgba(66, 66, 66, .75);
-    background-color: #2ecc71;
+    background-color: #66bb6a;
     color: white;
     transition: background-color .3s;
     font-family: "Trebuchet MS";
@@ -113,8 +113,7 @@ p {
 }
 
 .approveButton:hover {
-    background: linear-gradient(to bottom, #e4685d 5%, #fc8d83 100%);
-    background-color: #e4685d;
+    background-color: #42a5f5;
 }
 
 .approveButton:active {
