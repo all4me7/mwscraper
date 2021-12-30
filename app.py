@@ -2,7 +2,6 @@ from os import name
 from flask import Flask, render_template, request
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
-from requests.exceptions import ConnectionError
 import requests as req
 
 
@@ -22,9 +21,9 @@ def main():
     name_list = []
     value_list = []
     protocol = "https://"
-    
 
-    # GET VALUES FROM HTML 
+
+    # GET VALUES FROM HTML
     if request.method == 'POST':
         if 'approve' in request.form:
             url = request.form['url']
@@ -32,7 +31,7 @@ def main():
             atr = request.form['attribute']
             val = request.form['value']
 
-            # FIXING URL'S 
+            # FIXING URL'S
             if url.startswith(protocol) is not True:
                 url = protocol + url
 
@@ -82,8 +81,9 @@ def main():
                             link = protocol + domain_name + link
                         try:
                             status_code = req.get(link, timeout=4).status_code
-                        except:
-                            continue       
+                        except Exception as err:
+                            print(err)
+                            continue
                         if status_code == 404:
                             dead_links.append(str(link))
                 elif atr.endswith('*'):
@@ -94,9 +94,9 @@ def main():
                 else:
                     scraped_tags = soup.find_all(tag, attrs={atr: True})
                     for single_tag in scraped_tags:
-                        list_tag.append(single_tag)    
-            
-            # SCRAPING ATTRIBUTE VALUE 
+                        list_tag.append(single_tag)
+
+            # SCRAPING ATTRIBUTE VALUE
             elif len(url) != 0 and len(tag) != 0 and len(atr) != 0 and len(val) != 0:
                 if val.endswith('*'):
                     val = val.removesuffix('*')
@@ -106,24 +106,24 @@ def main():
                 else:
                     scraped_tags = soup.find_all(tag, attrs={atr: val})
                     for single_tag in scraped_tags:
-                        list_tag.append(single_tag)  
+                        list_tag.append(single_tag)
             else:
                 pass
 
-        # USED TAGS/ATTRIBUTES/VALUES LABEL        
+        # USED TAGS/ATTRIBUTES/VALUES LABEL
         used_tags = f'{tag} {atr} {val}'
-            
+
     return render_template(
-        'index.html', 
-        list_tag = list_tag, 
-        name_list = name_list, 
-        value_list = value_list, 
-        url = url, 
-        used_tags = used_tags, 
-        dead_links = dead_links, 
+        'index.html',
+        url = url,
+        list_tag = list_tag,
+        name_list = name_list,
+        value_list = value_list,
+        used_tags = used_tags,
+        dead_links = dead_links,
         hyperlinks = hyperlinks
         )
-    
+
 
 if __name__ == '__main__':
     app.run()
