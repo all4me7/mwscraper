@@ -43,8 +43,8 @@ def main():
 
             # SCRAPING TAG
             if len(url) != 0 and len(tag) != 0 and len(atr) == 0 and len(val) == 0:
-                if tag.endswith('*'):
-                    tag = tag.removesuffix('*')
+                if tag.endswith('@'):
+                    tag = tag.removesuffix('@')
                     scraped_tags = soup.find_all(tag)
                     for single_tag in scraped_tags:
                         name_list.append(single_tag.text)
@@ -86,8 +86,8 @@ def main():
                             continue
                         if status_code == 404:
                             dead_links.append(str(link))
-                elif atr.endswith('*'):
-                    atr = atr.removesuffix('*')
+                elif atr.endswith('@'):
+                    atr = atr.removesuffix('@')
                     scraped_tags = soup.find_all(tag, attrs={atr: True})
                     for single_tag in scraped_tags:
                         name_list.append(single_tag.text)
@@ -98,8 +98,8 @@ def main():
 
             # SCRAPING ATTRIBUTE VALUE
             elif len(url) != 0 and len(tag) != 0 and len(atr) != 0 and len(val) != 0:
-                if val.endswith('*'):
-                    val = val.removesuffix('*')
+                if val.endswith('@'):
+                    val = val.removesuffix('@')
                     scraped_tags = soup.find_all(tag, attrs={atr: val})
                     for single_tag in scraped_tags:
                         name_list.append(single_tag.text)
