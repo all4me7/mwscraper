@@ -1,3 +1,4 @@
+from os import name
 from flask import Flask, render_template, request
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
@@ -16,8 +17,11 @@ def home():
 def main():
     # VARIABLES
     list_tag = []
-    protocol = "https://"
+    hyperlinks = []
     dead_links = []
+    name_list = []
+    protocol = "https://"
+    
 
     # GET VALUES FROM HTML 
     if request.method == 'POST':
@@ -43,7 +47,7 @@ def main():
                     tag = tag.removesuffix('*')
                     scraped_tags = soup.find_all(tag)
                     for single_tag in scraped_tags:
-                        list_tag.append(single_tag.text)
+                        name_list.append(single_tag.text)
                 else:
                     scraped_tags = soup.find_all(tag)
                     for single_tag in scraped_tags:
@@ -61,30 +65,26 @@ def main():
                     scraped_tags = [x[atr] for x in soup.find_all(tag, attrs={atr: True})]
                     filtered_content = [x.strip() for x in scraped_tags if x.startswith("http") or x.startswith("/")]
                     filtered_content = list(set(filtered_content))
-                    if len(filtered_content) > 0:
-                        for link in filtered_content:
-                            if link.startswith("/"):
-                                link = protocol + domain_name + link
-                                list_tag.append(link)
-                            else:
-                                list_tag.append(link)
+                    for link in filtered_content:
+                        if link.startswith("/"):
+                            link = protocol + domain_name + link
+                            hyperlinks.append(link)
+                        else:
+                            hyperlinks.append(link)
                 elif atr.endswith('!'):
                     atr = atr.removesuffix('!')
                     scraped_tags = [x[atr] for x in soup.find_all(tag, attrs={atr: True})]
                     filtered_content = [x.strip() for x in scraped_tags if x.startswith("http") or x.startswith("/")]
                     filtered_content = list(set(filtered_content))
-                    if len(filtered_content) > 0:
-                        for link in filtered_content:
-                            if link.startswith("/"):
-                                link = protocol + domain_name + link
-                            try:
-                                status_code = req.get(link, timeout=4).status_code
-                            except:
-                                continue       
-                            if status_code == 404:
-                                dead_links.append(link)
-                    if len(dead_links) == 0:
-                        dead_links.append("Dead links not found.")
+                    for link in filtered_content:
+                        if link.startswith("/"):
+                            link = protocol + domain_name + link
+                        try:
+                            status_code = req.get(link, timeout=4).status_code
+                        except:
+                            continue       
+                        if status_code == 404:
+                            dead_links.append(str(link))
                 elif atr.endswith('*'):
                     atr = atr.removesuffix('*')
                     scraped_tags = soup.find_all(tag, attrs={atr: True})
@@ -112,7 +112,7 @@ def main():
         # USED TAGS/ATTRIBUTES/VALUES LABEL        
         used_tags = f'{tag} {atr} {val}'
             
-    return render_template('index.html', list_tag=list_tag, url=url, used_tags=used_tags, dead_links=dead_links)
+    return render_template('index.html', list_tag=list_tag, name_list=name_list, url=url, used_tags=used_tags, dead_links=dead_links, hyperlinks=hyperlinks)
     
 
 if __name__ == '__main__':

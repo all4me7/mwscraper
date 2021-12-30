@@ -16,14 +16,16 @@
             <div class="container1">
                 <ul>
                     {% for tag in list_tag %}
-                        {% if tag.startswith("https://") %}
-                            <li><a href="{{ tag }}" target="_blank">{{ tag }}</a></li>
-                        {% else %}
-                            <li>{{ tag }}</li>
-                        {% endif %}
+                        <li>{{ tag }}</li>
+                    {% endfor %}
+                    {% for tag in name_list %}
+                        <li>{{ tag }}</li>
                     {% endfor %}
                     {% for tag in dead_links %}
                         <li><a href="{{ tag }}" target="_blank" style="color: #ef5350;">{{ tag }}</a></li>
+                    {% endfor %}
+                    {% for tag in hyperlinks %}
+                        <li><a href="{{ tag }}" target="_blank" style="color: #42a5f5;">{{ tag }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
@@ -49,7 +51,6 @@
         let field1 = document.getElementById("idtag");
         let field2 = document.getElementById("idattribute");
         let field3 = document.getElementById("idvalue");
-
 
         field1.addEventListener("input", () => {
             let field2 = document.getElementById("idattribute");
