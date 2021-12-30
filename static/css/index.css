@@ -35,7 +35,7 @@ p {
     border-radius: 0px;
     box-shadow: 0px 0px 5px rgba(66, 66, 66, .75);
     outline: 0;
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 62vh;
 }
 
