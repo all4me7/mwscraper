@@ -80,8 +80,7 @@ def main():
                             try:
                                 status_code = req.get(link, timeout=4).status_code
                             except:
-                                continue
-                            
+                                continue       
                             if status_code == 404:
                                 list_tag.append(link)
                     else:
