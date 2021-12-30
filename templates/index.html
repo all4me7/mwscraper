@@ -22,6 +22,9 @@
                             <li>{{ tag }}</li>
                         {% endif %}
                     {% endfor %}
+                    {% for tag in dead_links %}
+                        <li><a href="{{ tag }}" target="_blank" style="color: #ef5350;">{{ tag }}</a></li>
+                    {% endfor %}
                 </ul>
             </div>
             <h2 id="idtitle">&nbsp;{{ url }}&nbsp;</h2>

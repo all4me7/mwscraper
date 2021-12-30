@@ -17,7 +17,7 @@ def main():
     # VARIABLES
     list_tag = []
     protocol = "https://"
-    temp = []
+    dead_links = []
 
     # GET VALUES FROM HTML 
     if request.method == 'POST':
@@ -82,9 +82,9 @@ def main():
                             except:
                                 continue       
                             if status_code == 404:
-                                list_tag.append(link)
-                    else:
-                        list_tag.append("Dead links not found.")
+                                dead_links.append(link)
+                    if len(dead_links) == 0:
+                        dead_links.append("Dead links not found.")
                 elif atr.endswith('*'):
                     atr = atr.removesuffix('*')
                     scraped_tags = soup.find_all(tag, attrs={atr: True})
@@ -112,7 +112,7 @@ def main():
         # USED TAGS/ATTRIBUTES/VALUES LABEL        
         used_tags = f'{tag} {atr} {val}'
             
-    return render_template('index.html', list_tag=list_tag, url=url, used_tags=used_tags)
+    return render_template('index.html', list_tag=list_tag, url=url, used_tags=used_tags, dead_links=dead_links)
     
 
 if __name__ == '__main__':
