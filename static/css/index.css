@@ -1,9 +1,11 @@
 * {
     text-align: center;
+    font-size: 24px;
 }
 
 html {
     height: 100%;
+    background-color: #f5f5f5;
 }
 
 .fullContainer {
@@ -11,14 +13,14 @@ html {
 }
 
 h2 {
-    font-size: 1.4vmax;
+    font-size: 1.2rem;
     font-family: "Trebuchet MS";
     cursor: default;
     color: #66bb6a;
 }
 
 p {
-    font-size: 1vmax;
+    font-size: 0.8rem;
     font-family: "Trebuchet MS";
     color: #66bb6a;
 }
@@ -34,7 +36,7 @@ a {
     margin-right: 5%;
     border-width: 1px;
     border-color: #CCCCCC;
-    background-color: #FFFFFF;
+    background-color: #fafafa;
     color: #000000;
     border-style: solid;
     border-radius: 0px;
@@ -45,6 +47,7 @@ a {
 }
 
 .container2 {
+    margin: 1%;
     text-align: center;
     height: 18vh;
 }
@@ -53,10 +56,10 @@ a {
     width: 40vmax;
     height: 2vmax;
     padding: 5px;
-    font-size: 1vmax;
+    font-size: 1rem;
     border-width: 1px;
     border-color: #CCCCCC;
-    background-color: #FFFFFF;
+    background-color: #fafafa;
     color: #000000;
     border-style: solid;
     border-radius: 0px;
@@ -68,7 +71,7 @@ a {
 }
 
 .inputField::placeholder {
-    font-size: 1vmax;
+    font-size: 1rem;
     opacity: 30%;
     font-family: "Trebuchet MS";
 }
@@ -77,10 +80,10 @@ a {
     width: 10vmax;
     height: 2vmax;
     padding: 5px;
-    font-size: 1vmax;
+    font-size: 1rem;
     border-width: 1px;
     border-color: #CCCCCC;
-    background-color: #FFFFFF;
+    background-color: #fafafa;
     color: #000000;
     border-style: solid;
     border-radius: 0px;
@@ -92,7 +95,7 @@ a {
 }
 
 .inputField2::placeholder {
-    font-size: 1vmax;
+    font-size: 1rem;
     opacity: 30%;
     font-family: "Trebuchet MS";
 }
@@ -104,7 +107,7 @@ a {
 .approveButton {
     width: 5vmax;
     height: 2vmax;
-    font-size: 1vmax;
+    font-size: 1rem;
     padding: 0;
     border-width: 0;
     outline: none;
@@ -137,5 +140,5 @@ li {
     word-wrap: break-word;
     list-style-type: circle;
     font-family: "Trebuchet MS";
-    font-size: 1vmax;
+    font-size: 1rem;
 }

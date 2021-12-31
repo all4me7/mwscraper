@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='/favicon.png') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
     <title>HTML Scraper</title>
@@ -32,16 +32,15 @@
                     {% endfor %}
                 </ul>
             </div>
-            <h2 id="idtitle">&nbsp;{{ url }}&nbsp;</h2>
             <div class="container2">
                 <input class="inputField" type="text" name="url" id="idurl" autocomplete="off"
-                    placeholder="URL Address">
+                    placeholder="URL Address" value="{{ url }}">
                 <br>
                 <input class="inputField2" type="text" name="tag" id="idtag" autocomplete="off" placeholder="HTML Tag">
                 <input readonly class="inputField2" type="text" name="attribute" id="idattribute" autocomplete="off"
-                    placeholder="CSS Attribute">
+                    placeholder="TAG Attribute">
                 <input readonly class="inputField2" type="text" name="value" id="idvalue" autocomplete="off"
-                    placeholder="CSS Attribute Value">
+                    placeholder="Attribute Value">
                 <br>
                 <input id="idbutton" type="submit" class="approveButton" name="approve" value="Search"
                     onclick="return empty()">
