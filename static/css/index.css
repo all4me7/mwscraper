@@ -26,6 +26,7 @@ p {
 }
 
 a {
+    font-size: 0.8rem;
     text-decoration: none;
     color: #42a5f5;
 }
@@ -140,5 +141,5 @@ li {
     word-wrap: break-word;
     list-style-type: circle;
     font-family: "Trebuchet MS";
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
