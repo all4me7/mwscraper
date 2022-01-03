@@ -6,14 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='/favicon.png') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/uikit-3.9.4/css/uikit.min.css') }}">
     <title>HTML Scraper</title>
 </head>
 
 <body>
-    <div class="fullContainer">
+    <img src="{{ url_for('static', filename='img/pngfind.com-spider-web-png-transparent-370475.png') }}" alt="spider">
+    <div>
         <form action="/" method="POST">
-            <div class="container1">
+            <div class="uk-margin-large-bottom">
                 <ul>
                     {% for tag in list_tag %}
                         <li>{{ tag }}</li>
@@ -31,20 +32,19 @@
                         <li><a href="{{ tag }}" target="_blank" style="color: #42a5f5;">{{ tag }}</a></li>
                     {% endfor %}
                 </ul>
+                <br>
             </div>
-            <div class="container2">
-                <input class="inputField" type="text" name="url" id="idurl" autocomplete="off"
-                    placeholder="URL Address" value="{{ url }}">
-                <br>
-                <input class="inputField2" type="text" name="tag" id="idtag" autocomplete="off" placeholder="HTML Tag">
-                <input readonly class="inputField2" type="text" name="attribute" id="idattribute" autocomplete="off"
-                    placeholder="TAG Attribute">
-                <input readonly class="inputField2" type="text" name="value" id="idvalue" autocomplete="off"
+            <div class="uk-position-fixed uk-position-bottom-right uk-postion-flex uk-margin-medium-bottom uk-margin-medium-right">
+                <input class="uk-input uk-form-width-large" type="text" name="url" id="idurl" autocomplete="off"
+                    placeholder="Page address" value="{{ url }}">
+                <input class="uk-input uk-form-width-small" type="text" name="tag" id="idtag" autocomplete="off" placeholder="HTML Tag">
+                <input readonly class="uk-input uk-form-width-small" type="text" name="attribute" id="idattribute" autocomplete="off"
+                    placeholder="Tag Attribute">
+                <input readonly class="uk-input uk-form-width-small" type="text" name="value" id="idvalue" autocomplete="off"
                     placeholder="Attribute Value">
-                <br>
-                <input id="idbutton" type="submit" class="approveButton" name="approve" value="Search"
+                <input id="idbutton" type="submit" class="uk-button uk-button-primary" name="approve" value="Search"
                     onclick="return empty()">
-                <p>{{ used_tags }}</p>
+                <p class="uk-label uk-position-fixed uk-position-top-right uk-margin-medium-top uk-margin-medium-right">{{ used_tags }}</p>
             </div>
         </form>
     </div>
