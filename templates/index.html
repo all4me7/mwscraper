@@ -15,15 +15,15 @@
         <form action="/" method="POST">
             <div class="uk-navbar-container" id="top">
                 <div class="uk-navbar uk-position-fixed uk-position-top uk-box-shadow-medium uk-background-muted uk-flex-inline">
-                    <a class="uk-button uk-button-secondary" href="#top" uk-scroll>UP</a>
+                    <a class="uk-button uk-button-primary" href="#top" uk-scroll>UP</a>
                     <input class="uk-input uk-form-width-large uk-text-medium" type="text" name="url" id="idurl"
-                        autocomplete="off" placeholder="Page address" value="{{ url }}">
-                    <input class="uk-input uk-form-width-medium uk-text-medium" type="text" name="tag" id="idtag"
-                        autocomplete="off" placeholder="HTML Tag">
-                    <input readonly class="uk-input uk-form-width-medium uk-text-medium" type="text" name="attribute"
-                        id="idattribute" autocomplete="off" placeholder="Tag Attribute">
-                    <input readonly class="uk-input uk-form-width-medium uk-text-medium" type="text" name="value"
-                        id="idvalue" autocomplete="off" placeholder="Attribute Value">
+                        autocomplete="off" placeholder="URL" value="{{ url }}">
+                    <input class="uk-input uk-form-width-small uk-text-medium" type="text" name="tag" id="idtag"
+                        autocomplete="off" placeholder="Tag">
+                    <input readonly class="uk-input uk-form-width-small uk-text-medium" type="text" name="attribute"
+                        id="idattribute" autocomplete="off" placeholder="Attribute">
+                    <input readonly class="uk-input uk-form-width-small uk-text-medium" type="text" name="value"
+                        id="idvalue" autocomplete="off" placeholder="Value">
                     <input id="idbutton" type="submit" class="uk-button uk-button-danger uk-text-medium" name="approve"
                         value="submit" onclick="return empty()">
                 </div>
