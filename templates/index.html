@@ -11,10 +11,22 @@
 </head>
 
 <body>
-    <img src="{{ url_for('static', filename='img/pngfind.com-spider-web-png-transparent-370475.png') }}" alt="spider">
     <div>
         <form action="/" method="POST">
-            <div class="uk-margin-large-bottom">
+            <div class="uk-navbar uk-position-top uk-box-shadow-medium uk-background-primary">
+                <span class="uk-text-large uk-text-bold uk-margin-small-left uk-margin-small-right" style="color: white;">Web Scraper</span>
+                <input class="uk-input uk-form-width-large" type="text" name="url" id="idurl" autocomplete="off"
+                    placeholder="Page address" value="{{ url }}">
+                <input class="uk-input uk-form-width-small" type="text" name="tag" id="idtag" autocomplete="off" placeholder="HTML Tag">
+                <input readonly class="uk-input uk-form-width-small" type="text" name="attribute" id="idattribute" autocomplete="off"
+                    placeholder="Tag Attribute">
+                <input readonly class="uk-input uk-form-width-small" type="text" name="value" id="idvalue" autocomplete="off"
+                    placeholder="Attribute Value">
+                <input id="idbutton" type="submit" class="uk-button uk-button-primary" name="approve" value="Search"
+                    onclick="return empty()">
+                <span class="uk-text-large uk-text-bold uk-margin-small-right uk-position-right" style="color: white;">{{ used_tags }}</span>
+            </div>
+            <div class="uk-margin-large-top uk-margin-small-bottom">
                 <ul>
                     {% for tag in list_tag %}
                         <li>{{ tag }}</li>
@@ -32,19 +44,6 @@
                         <li><a href="{{ tag }}" target="_blank" style="color: #42a5f5;">{{ tag }}</a></li>
                     {% endfor %}
                 </ul>
-                <br>
-            </div>
-            <div class="uk-position-fixed uk-position-bottom-right uk-postion-flex uk-margin-medium-bottom uk-margin-medium-right">
-                <input class="uk-input uk-form-width-large" type="text" name="url" id="idurl" autocomplete="off"
-                    placeholder="Page address" value="{{ url }}">
-                <input class="uk-input uk-form-width-small" type="text" name="tag" id="idtag" autocomplete="off" placeholder="HTML Tag">
-                <input readonly class="uk-input uk-form-width-small" type="text" name="attribute" id="idattribute" autocomplete="off"
-                    placeholder="Tag Attribute">
-                <input readonly class="uk-input uk-form-width-small" type="text" name="value" id="idvalue" autocomplete="off"
-                    placeholder="Attribute Value">
-                <input id="idbutton" type="submit" class="uk-button uk-button-primary" name="approve" value="Search"
-                    onclick="return empty()">
-                <p class="uk-label uk-position-fixed uk-position-top-right uk-margin-medium-top uk-margin-medium-right">{{ used_tags }}</p>
             </div>
         </form>
     </div>
