@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="overflow-y:scroll;">
 
 <head>
     <meta charset="UTF-8">
@@ -15,7 +15,7 @@
 
     <div>
         <form action="/" method="POST">
-            <div class="uk-section uk-section-primary uk-section-xsmall uk-text-center uk-width-1-1 uk-align-center uk-box-shadow-medium">
+            <div class="uk-section uk-section-primary uk-section-xsmall uk-text-center uk-width-1-1 uk-width-2-3@m uk-align-center uk-box-shadow-medium">
                 <h1 id="home" class="uk-text-bold">Web-Scraper</h1>
                 <input class="uk-input uk-form-width-large uk-text-medium uk-align-center uk-margin-small-bottom" type="text" name="url"
                     id="idurl" autocomplete="off" placeholder="URL" value="{{ url }}" style="color: whitesmoke">
@@ -32,7 +32,7 @@
             </div>
     </div>
     <div></div>
-    <div id="results" class="uk-section uk-section-default uk-section-xsmall uk-text-left uk-width-1-1 uk-width-1-2@m uk-align-center uk-box-shadow-medium">
+    <div id="results" class="uk-section uk-section-default uk-section-xsmall uk-text-left uk-width-1-1 uk-width-2-3@m uk-align-center uk-box-shadow-medium">
         <ol id="ol" class="uk-text-break uk-margin-small-left uk-margin-small-right">
             {% for tag in list_tag %}
             <li>{{ tag }}</li>
@@ -52,7 +52,7 @@
         </ol>
     </div>
     </form>
-    <span class="uk-label uk-label-success uk-position-fixed uk-position-bottom-right">{{ used_tags }}</span>
+    <!-- <span class="uk-label uk-label-success uk-position-fixed uk-position-bottom-right">{{ used_tags }}</span> -->
     </div>
 
     <script>
