@@ -8,6 +8,7 @@
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='/favicon.png') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/uikit-3.9.4/css/uikit.min.css') }}">
     <title>HTML Scraper</title>
+
 </head>
 
 <body>
@@ -15,16 +16,16 @@
     <div>
         <form action="/" method="POST">
             <div class="uk-section uk-section-primary uk-section-xsmall uk-text-center uk-width-1-1 uk-align-center uk-box-shadow-medium">
-                <h1 href="" class="uk-text-bold" style="font-family: Trebuchet MS;">Web-Scraper</h1>
-                <input class="uk-input uk-form-width-large uk-text-medium uk-align-center" type="text" name="url"
-                    id="idurl" autocomplete="off" placeholder="URL" value="{{ url }}">
-                <div class="uk-container uk-text-center" id="top">
+                <h1 id="logo" class="uk-text-bold">Web-Scraper</h1>
+                <input class="uk-input uk-form-width-large uk-text-medium uk-align-center uk-margin-small-bottom" type="text" name="url"
+                    id="idurl" autocomplete="off" placeholder="URL" value="{{ url }}" style="color: whitesmoke">
+                <div class="uk-container uk-text-center uk-margin-small-bottom" id="top">
                     <input class="uk-input uk-form-width-small uk-text-medium uk-margin-small-bottom" type="text" name="tag" id="idtag"
-                        autocomplete="off" placeholder="Tag">
+                        autocomplete="off" placeholder="Tag" style="color: whitesmoke">
                     <input readonly class="uk-input uk-form-width-small uk-text-medium uk-margin-small-bottom" type="text" name="attribute"
-                        id="idattribute" autocomplete="off" placeholder="Attribute">
+                        id="idattribute" autocomplete="off" placeholder="Attribute" style="color: whitesmoke">
                     <input readonly class="uk-input uk-form-width-small uk-text-medium uk-margin-small-bottom" type="text" name="value"
-                        id="idvalue" autocomplete="off" placeholder="Value">
+                        id="idvalue" autocomplete="off" placeholder="Value" style="color: whitesmoke">
                 </div>
                 <input id="idbutton" type="submit" class="uk-button uk-button-default uk-text-medium uk-align-center"
                     name="approve" value="submit" onclick="return empty()">
@@ -95,6 +96,7 @@
             }
         }
     </script>
+
 </body>
 
 </html>
