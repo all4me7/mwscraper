@@ -11,45 +11,46 @@
 </head>
 
 <body>
+
     <div>
         <form action="/" method="POST">
-            <div class="uk-navbar-container" id="top">
-                <div class="uk-navbar uk-position-fixed uk-position-top uk-box-shadow-medium uk-background-muted uk-flex-inline">
-                    <a class="uk-button uk-button-primary" href="#top" uk-scroll>UP</a>
-                    <input class="uk-input uk-form-width-large uk-text-medium" type="text" name="url" id="idurl"
-                        autocomplete="off" placeholder="URL" value="{{ url }}">
-                    <input class="uk-input uk-form-width-small uk-text-medium" type="text" name="tag" id="idtag"
+            <div class="uk-section uk-section-primary uk-section-xsmall uk-text-center uk-width-1-1 uk-align-center uk-box-shadow-medium">
+                <h1 href="" class="uk-text-bold" style="font-family: Trebuchet MS;">Web-Scraper</h1>
+                <input class="uk-input uk-form-width-large uk-text-medium uk-align-center" type="text" name="url"
+                    id="idurl" autocomplete="off" placeholder="URL" value="{{ url }}">
+                <div class="uk-container uk-text-center" id="top">
+                    <input class="uk-input uk-form-width-small uk-text-medium uk-margin-small-bottom" type="text" name="tag" id="idtag"
                         autocomplete="off" placeholder="Tag">
-                    <input readonly class="uk-input uk-form-width-small uk-text-medium" type="text" name="attribute"
+                    <input readonly class="uk-input uk-form-width-small uk-text-medium uk-margin-small-bottom" type="text" name="attribute"
                         id="idattribute" autocomplete="off" placeholder="Attribute">
-                    <input readonly class="uk-input uk-form-width-small uk-text-medium" type="text" name="value"
+                    <input readonly class="uk-input uk-form-width-small uk-text-medium uk-margin-small-bottom" type="text" name="value"
                         id="idvalue" autocomplete="off" placeholder="Value">
-                    <input id="idbutton" type="submit" class="uk-button uk-button-danger uk-text-medium" name="approve"
-                        value="submit" onclick="return empty()">
                 </div>
+                <input id="idbutton" type="submit" class="uk-button uk-button-default uk-text-medium uk-align-center"
+                    name="approve" value="submit" onclick="return empty()">
             </div>
-            <br>
-            <h3 class="uk-text-success uk-margin-small-left">{{ used_tags }}</h3>
-            <div class="uk-margin-small-top">
-                <ul class="uk-text-break">
-                    {% for tag in list_tag %}
-                    <li>{{ tag }}</li>
-                    {% endfor %}
-                    {% for tag in value_list %}
-                    <li>{{ tag }}</li>
-                    {% endfor %}
-                    {% for tag in name_list %}
-                    <li>{{ tag }}</li>
-                    {% endfor %}
-                    {% for tag in dead_links %}
-                    <li><a href="{{ tag }}" target="_blank" style="color: #ef5350;">{{ tag }}</a></li>
-                    {% endfor %}
-                    {% for tag in hyperlinks %}
-                    <li><a href="{{ tag }}" target="_blank" style="color: #42a5f5;">{{ tag }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </form>
+    </div>
+    <div></div>
+    <div class="uk-section uk-section-default uk-section-xsmall uk-text-left uk-width-1-1 uk-width-2-3@m uk-align-center uk-box-shadow-medium">
+        <ol class="uk-text-break">
+            {% for tag in list_tag %}
+            <li>{{ tag }}</li>
+            {% endfor %}
+            {% for tag in value_list %}
+            <li>{{ tag }}</li>
+            {% endfor %}
+            {% for tag in name_list %}
+            <li>{{ tag }}</li>
+            {% endfor %}
+            {% for tag in dead_links %}
+            <li><a href="{{ tag }}" target="_blank" style="color: #ef5350;">{{ tag }}</a></li>
+            {% endfor %}
+            {% for tag in hyperlinks %}
+            <li><a href="{{ tag }}" target="_blank" style="color: #42a5f5;">{{ tag }}</a></li>
+            {% endfor %}
+        </ol>
+    </div>
+    </form>
     </div>
 
     <script>
