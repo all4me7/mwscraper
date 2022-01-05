@@ -33,7 +33,7 @@
     </div>
     <div></div>
     <div class="uk-section uk-section-default uk-section-xsmall uk-text-left uk-width-1-1 uk-width-2-3@m uk-align-center uk-box-shadow-medium">
-        <ol class="uk-text-break">
+        <ol class="uk-text-break uk-margin-small-left uk-margin-small-right">
             {% for tag in list_tag %}
             <li>{{ tag }}</li>
             {% endfor %}
@@ -52,6 +52,7 @@
         </ol>
     </div>
     </form>
+    <span class="uk-label uk-label-success uk-position-fixed uk-position-bottom-right">{{ used_tags }}</span>
     </div>
 
     <script>
