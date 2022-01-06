@@ -28,7 +28,7 @@
                         id="idvalue" autocomplete="off" placeholder="Value" style="color: whitesmoke">
                 </div>
                 <input id="idbutton" type="submit" class="uk-button uk-button-default uk-text-medium uk-align-center"
-                    name="approve" value="clear" onclick="return empty()">
+                    name="approve" value="submit" onclick="return empty()">
             </div>
     </div>
     <div></div>
@@ -52,27 +52,23 @@
         </ol>
     </div>
     </form>
-    <span class="uk-label uk-label-success uk-position-fixed uk-position-bottom-right">{{ used_tags }}</span>
+    <!-- <span class="uk-label uk-label-success uk-position-fixed uk-position-bottom-right">{{ used_tags }}</span> -->
     </div>
 
     <script>
-        const url = document.getElementById("idurl")
         const field1 = document.getElementById("idtag");
         const field2 = document.getElementById("idattribute");
         const field3 = document.getElementById("idvalue");
-        const button = document.getElementById("idbutton");
         const results = document.getElementById("results");
 
         field1.addEventListener("input", () => {
             if (field1.value.length > 0) {
-                field2.removeAttribute("readonly")
-                button.value = "submit"
+                field2.removeAttribute("readonly");
             } else {
                 field2.value = "";
                 field3.value = "";
                 field2.setAttribute("readonly", true);
                 field3.setAttribute("readonly", true);
-                button.value = "clear"
             }
         })
 
@@ -86,7 +82,7 @@
         })
 
         function empty() {
-            let urlValue = url.value;
+            let url = document.getElementById("idurl").value;
             if (url.length == 0) {
                 alert("Invalid URL..");
                 return false;
