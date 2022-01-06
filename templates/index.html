@@ -16,7 +16,7 @@
     <div>
         <form action="/" method="POST">
             <div class="uk-section uk-section-secondary uk-section-xsmall uk-text-center uk-width-1-1 uk-align-center uk-box-shadow-medium" style="background-color: #355070;">
-                <h1 id="home" class="uk-text-bold">Web-Scraper</h1>
+                <h2 id="home" class="uk-text-bold">HTML-Scraper</h2>
                 <input class="uk-input uk-form-width-large uk-text-medium uk-align-center uk-margin-small-bottom" type="text" name="url"
                     id="idurl" autocomplete="off" placeholder="URL" value="{{ url }}" style="color: whitesmoke">
                 <div class="uk-container uk-text-center uk-margin-small-bottom" id="top">
@@ -27,8 +27,8 @@
                     <input readonly class="uk-input uk-form-width-small uk-text-medium uk-margin-small-bottom" type="text" name="value"
                         id="idvalue" autocomplete="off" placeholder="Value" style="color: whitesmoke">
                 </div>
-                <input id="idbutton" type="submit" class="uk-button uk-button-default uk-text-medium uk-align-center"
-                    name="approve" value="submit" onclick="return empty()">
+                <input id="idbutton" type="submit" class="uk-button uk-button-default uk-text-small uk-align-center"
+                    name="approve" value="submit" onclick="return empty()" style="padding: 10px;">
             </div>
     </div>
     <div></div>
@@ -101,7 +101,7 @@
         document.addEventListener("submit", () => {
             let value = field2.value;
             if (value.endsWith("!")) {
-                home.innerText = "Please wait while searching..."
+                home.innerText = "Searching Dead Links...";
             }
         })
     </script>
