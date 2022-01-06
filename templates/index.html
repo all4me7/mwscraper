@@ -60,6 +60,7 @@
         const field2 = document.getElementById("idattribute");
         const field3 = document.getElementById("idvalue");
         const results = document.getElementById("results");
+        const home = document.getElementById("home");
 
         field1.addEventListener("input", () => {
             if (field1.value.length > 0) {
@@ -97,6 +98,12 @@
             results.setAttribute("hidden", true);
         }
 
+        document.addEventListener("submit", () => {
+            let value = field2.value;
+            if (value.endsWith("!")) {
+                home.innerText = "Please wait while searching..."
+            }
+        })
     </script>
 
 </body>
