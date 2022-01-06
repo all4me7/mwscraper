@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
+from requests.exceptions import ConnectionError
 import requests as req
 
 
@@ -37,7 +38,11 @@ def main():
             domain_name = urlparse(url).netloc
 
             # SOUP SETUP
-            response = req.get(url)
+            try:
+                response = req.get(url)
+            except ConnectionError:
+                return render_template("index.html")
+
             soup = BeautifulSoup(response.content, 'html.parser')
 
             # SCRAPING TAG
