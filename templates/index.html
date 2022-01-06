@@ -28,7 +28,7 @@
                         id="idvalue" autocomplete="off" placeholder="Value" style="color: whitesmoke">
                 </div>
                 <input id="idbutton" type="submit" class="uk-button uk-button-default uk-text-medium uk-align-center"
-                    name="approve" value="submit" onclick="return empty()">
+                    name="approve" value="clear" onclick="return empty()">
             </div>
     </div>
     <div></div>
@@ -52,39 +52,41 @@
         </ol>
     </div>
     </form>
-    <!-- <span class="uk-label uk-label-success uk-position-fixed uk-position-bottom-right">{{ used_tags }}</span> -->
+    <span class="uk-label uk-label-success uk-position-fixed uk-position-bottom-right">{{ used_tags }}</span>
     </div>
 
     <script>
-        let field1 = document.getElementById("idtag");
-        let field2 = document.getElementById("idattribute");
-        let field3 = document.getElementById("idvalue");
-        let results = document.getElementById("results");
+        const url = document.getElementById("idurl")
+        const field1 = document.getElementById("idtag");
+        const field2 = document.getElementById("idattribute");
+        const field3 = document.getElementById("idvalue");
+        const button = document.getElementById("idbutton");
+        const results = document.getElementById("results");
 
         field1.addEventListener("input", () => {
-            let field2 = document.getElementById("idattribute");
             if (field1.value.length > 0) {
                 field2.removeAttribute("readonly")
+                button.value = "submit"
             } else {
                 field2.value = "";
                 field3.value = "";
                 field2.setAttribute("readonly", true);
                 field3.setAttribute("readonly", true);
+                button.value = "clear"
             }
         })
 
         field2.addEventListener("input", () => {
-            let field3 = document.getElementById("idvalue");
             if (field2.value.length > 0) {
-                field3.removeAttribute("readonly")
+                field3.removeAttribute("readonly");
             } else {
                 field3.setAttribute("readonly", true);
-                field3.setAttribute("readonly", true)
+                field3.setAttribute("readonly", true);
             }
         })
 
         function empty() {
-            let url = document.getElementById("idurl").value;
+            let urlValue = url.value;
             if (url.length == 0) {
                 alert("Invalid URL..");
                 return false;
@@ -96,7 +98,7 @@
         if (document.getElementById('ol').getElementsByTagName('li').length >= 1) {
             results.removeAttribute("hidden");
         } else {
-            results.setAttribute("hidden", true)
+            results.setAttribute("hidden", true);
         }
 
     </script>
