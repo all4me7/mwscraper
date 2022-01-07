@@ -18,6 +18,7 @@ def main():
     list_tag = []
     hyperlinks = []
     dead_links = []
+    dead_links_full = []
     name_list = []
     value_list = []
     protocol = "https://"
@@ -45,8 +46,30 @@ def main():
 
             soup = BeautifulSoup(response.content, 'html.parser')
 
+            # SCRAPING SITE
+            if len(url) != 0 and len(tag) == 0 and len(atr) == 0 and len(val) == 0:
+                    final = []
+                    all_elements = [x for x in soup.find_all(True)]
+                    src_list = [x.get("src") for x in all_elements if x.get("src") != None]
+                    data_src_list = [x.get("data-src") for x in all_elements if x.get("data-src") != None]
+                    href_list = [x.get("href") for x in all_elements if x.get("href") != None]
+                    added_lists = list(set(src_list + data_src_list + href_list))
+                    filtered = [x for x in added_lists if x.startswith("/") or x.startswith("http")]
+                    for i in filtered:
+                        if i.startswith("/"):
+                            i = f"https://{domain_name}{i}"
+                        final.append(i)
+                    for link in final:
+                        try:
+                            status_code = req.get(link, timeout=4).status_code
+                        except Exception as err:
+                            print(err)
+                            continue
+                        if status_code == 404:
+                            dead_links_full.append(str(link))
+
             # SCRAPING TAG
-            if len(url) != 0 and len(tag) != 0 and len(atr) == 0 and len(val) == 0:
+            elif len(url) != 0 and len(tag) != 0 and len(atr) == 0 and len(val) == 0:
                 if tag.endswith('@'):
                     tag = tag.removesuffix('@')
                     scraped_tags = soup.find_all(tag)
@@ -120,6 +143,7 @@ def main():
     return render_template(
         'index.html',
         url = url,
+        dead_links_full = dead_links_full,
         list_tag = list_tag,
         name_list = name_list,
         value_list = value_list,

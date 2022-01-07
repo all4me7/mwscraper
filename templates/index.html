@@ -43,6 +43,9 @@
             {% for tag in name_list %}
             <li>{{ tag }}</li>
             {% endfor %}
+            {% for tag in dead_links_full %}
+            <li><a href="{{ tag }}" target="_blank" style="color: #ef5350;">{{ tag }}</a></li>
+            {% endfor %}
             {% for tag in dead_links %}
             <li><a href="{{ tag }}" target="_blank" style="color: #ef5350;">{{ tag }}</a></li>
             {% endfor %}
@@ -100,7 +103,7 @@
 
         document.addEventListener("submit", () => {
             let value = field2.value;
-            if (value.endsWith("!")) {
+            if (value.endsWith("!") || value.length == 0) {
                 home.innerText = "Searching Dead Links...";
             } else {
                 home.innerText = "Scraping...";
