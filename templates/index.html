@@ -102,9 +102,10 @@
         }
 
         document.addEventListener("submit", () => {
-            let value = field2.value;
-            if (value.endsWith("!") || value.length == 0) {
-                home.innerText = "Searching Dead Links...";
+            let value = field1.value
+            let value2 = field2.value;
+            if (value.length == 0 || value2.endsWith("!") ) {
+                home.innerText = "Searching dead links...";
             } else {
                 home.innerText = "Scraping...";
             }
