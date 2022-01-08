@@ -51,7 +51,6 @@ def main():
     value_list = []
     protocol = "https://"
 
-
     # GET VALUES FROM HTML
     if request.method == 'POST':
         if 'approve' in request.form:
