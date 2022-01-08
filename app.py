@@ -3,10 +3,38 @@ from bs4 import BeautifulSoup
 from urllib.parse import urlparse
 from requests.exceptions import ConnectionError
 import requests as req
+import httpx
+import asyncio
 
 
 app = Flask(__name__)
 
+
+async def status_check(list_to_scrape, list_for_dead_links):
+    async with httpx.AsyncClient() as client:
+        for link in list_to_scrape:
+            try:
+                response = await client.get(link)
+            except Exception as err:
+                print(err)
+            if response.status_code == 404:
+                list_for_dead_links.append(str(link))
+            else:
+                continue
+
+async def status_check_v2(list_to_scrape, list_for_dead_links, prot, dom):
+    async with httpx.AsyncClient() as client:
+        for link in list_to_scrape:
+            if link.startswith("/"):
+                link = prot + dom + link
+            try:
+                response = await client.get(link)
+            except Exception as err:
+                print(err)
+            if response.status_code == 404:
+                list_for_dead_links.append(str(link))
+            else:
+                continue
 
 @app.route('/')
 def home():
@@ -59,14 +87,7 @@ def main():
                         if i.startswith("/"):
                             i = f"https://{domain_name}{i}"
                         final.append(i)
-                    for link in final:
-                        try:
-                            status_code = req.get(link, timeout=4).status_code
-                        except Exception as err:
-                            print(err)
-                            continue
-                        if status_code == 404:
-                            dead_links_full.append(str(link))
+                    asyncio.run(status_check(final, dead_links_full))
 
             # SCRAPING TAG
             elif len(url) != 0 and len(tag) != 0 and len(atr) == 0 and len(val) == 0:
@@ -103,16 +124,8 @@ def main():
                     scraped_tags = [x[atr] for x in soup.find_all(tag, attrs={atr: True})]
                     filtered_content = [x.strip() for x in scraped_tags if x.startswith("http") or x.startswith("/")]
                     filtered_content = list(set(filtered_content))
-                    for link in filtered_content:
-                        if link.startswith("/"):
-                            link = protocol + domain_name + link
-                        try:
-                            status_code = req.get(link, timeout=4).status_code
-                        except Exception as err:
-                            print(err)
-                            continue
-                        if status_code == 404:
-                            dead_links.append(str(link))
+                    asyncio.run(status_check_v2(filtered_content, dead_links, protocol, domain_name))
+
                 elif atr.endswith('@'):
                     atr = atr.removesuffix('@')
                     scraped_tags = soup.find_all(tag, attrs={atr: True})
