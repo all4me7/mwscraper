@@ -14,7 +14,7 @@ async def status_check(list_to_scrape, list_for_dead_links):
     async with httpx.AsyncClient() as client:
         for link in list_to_scrape:
             try:
-                response = await client.get(link, follow_redirects=True)
+                response = await client.get(link)
             except Exception as err:
                 print(err)
             if response.status_code == 404:
@@ -28,7 +28,7 @@ async def status_check_v2(list_to_scrape, list_for_dead_links, prot, dom):
             if link.startswith("/"):
                 link = prot + dom + link
             try:
-                response = await client.get(link, follow_redirects=True)
+                response = await client.get(link)
             except Exception as err:
                 print(err)
             if response.status_code == 404:
