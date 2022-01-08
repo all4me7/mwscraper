@@ -81,7 +81,7 @@ def main():
                     data_src_list = [x.get("data-src") for x in all_elements if x.get("data-src") != None]
                     href_list = [x.get("href") for x in all_elements if x.get("href") != None]
                     added_lists = list(set(src_list + data_src_list + href_list))
-                    filtered = [x for x in added_lists if x.startswith("/") or x.startswith("http")]
+                    filtered = [x for x in added_lists if str(x).startswith("/") or str(x).startswith("http")]
                     for i in filtered:
                         if i.startswith("/"):
                             i = f"https://{domain_name}{i}"
@@ -110,7 +110,7 @@ def main():
                 elif atr.endswith('#'):
                     atr = atr.removesuffix('#')
                     scraped_tags = [x[atr] for x in soup.find_all(tag, attrs={atr: True})]
-                    filtered_content = [x.strip() for x in scraped_tags if x.startswith("http") or x.startswith("/")]
+                    filtered_content = [x.strip() for x in scraped_tags if str(x).startswith("http") or str(x).startswith("/")]
                     filtered_content = list(set(filtered_content))
                     for link in filtered_content:
                         if link.startswith("/"):
@@ -121,7 +121,7 @@ def main():
                 elif atr.endswith('!'):
                     atr = atr.removesuffix('!')
                     scraped_tags = [x[atr] for x in soup.find_all(tag, attrs={atr: True})]
-                    filtered_content = [x.strip() for x in scraped_tags if x.startswith("http") or x.startswith("/")]
+                    filtered_content = [x.strip() for x in scraped_tags if str(x).startswith("http") or str(x).startswith("/")]
                     filtered_content = list(set(filtered_content))
                     asyncio.run(status_check_v2(filtered_content, dead_links, protocol, domain_name))
 
