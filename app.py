@@ -16,6 +16,7 @@ async def status_check(list_to_scrape, list_for_dead_links):
             try:
                 response = await client.get(link)
             except Exception as err:
+                list_for_dead_links.append(str(link))
                 print(err)
             if response.status_code == 404:
                 list_for_dead_links.append(str(link))
@@ -30,6 +31,7 @@ async def status_check_v2(list_to_scrape, list_for_dead_links, prot, dom):
             try:
                 response = await client.get(link)
             except Exception as err:
+                list_for_dead_links.append(str(link))
                 print(err)
             if response.status_code == 404:
                 list_for_dead_links.append(str(link))
