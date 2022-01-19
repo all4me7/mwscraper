@@ -15,26 +15,33 @@
 
     <div>
         <form action="/" method="POST" spellcheck="false">
-            <div class="uk-section uk-section-secondary uk-section-xsmall uk-text-center uk-width-1-1 uk-align-center uk-box-shadow-medium" style="background-color: #598392;">
-                <h1 class="uk-text-normal" style="font-family: 'Trebuchet MS';"><span style="color: #edc531;">&lt;</span> HTML SCRAPER <span style="color: #edc531;">/&gt;</span></h1>
+            <div class="uk-section uk-section-secondary uk-section-xsmall uk-text-center uk-width-1-1 uk-align-center uk-box-shadow-medium"
+                style="background-color: #598392;">
+                <h1 class="uk-text-normal" style="font-family: 'Trebuchet MS';"><span
+                        style="color: #edc531;">&lt;</span> HTML SCRAPER <span style="color: #edc531;">/&gt;</span></h1>
                 <h4 id="home" class="uk-text uk-text-center uk-margin-small">Static Websites Scraper</h4>
-                <input class="uk-input uk-form-width-large uk-text-medium uk-align-center uk-margin-small-bottom" type="text" name="url"
-                    id="idurl" autocomplete="off" placeholder="URL" value="{{ url }}" style="color: whitesmoke">
+                <input class="uk-input uk-form-width-large uk-text-medium uk-align-center uk-margin-small-bottom"
+                    type="text" name="url" id="idurl" autocomplete="off" placeholder="URL" value="{{ url }}"
+                    style="color: whitesmoke">
                 <div class="uk-container uk-text-center uk-margin-small-bottom" id="top">
-                    <input class="uk-input uk-form-width-small uk-text-medium uk-margin-small-bottom" type="text" name="tag" id="idtag"
-                        autocomplete="off" placeholder="Tag" style="color: whitesmoke">
-                    <input readonly class="uk-input uk-form-width-small uk-text-medium uk-margin-small-bottom" type="text" name="attribute"
-                        id="idattribute" autocomplete="off" placeholder="Attribute" style="color: whitesmoke">
-                    <input readonly class="uk-input uk-form-width-small uk-text-medium uk-margin-small-bottom" type="text" name="value"
-                        id="idvalue" autocomplete="off" placeholder="Value" style="color: whitesmoke">
+                    <input class="uk-input uk-form-width-small uk-text-medium uk-margin-small-bottom" type="text"
+                        name="tag" id="idtag" autocomplete="off" placeholder="Tag" style="color: whitesmoke">
+                    <input readonly class="uk-input uk-form-width-small uk-text-medium uk-margin-small-bottom"
+                        type="text" name="attribute" id="idattribute" autocomplete="off" placeholder="Attribute"
+                        style="color: whitesmoke">
+                    <input readonly class="uk-input uk-form-width-small uk-text-medium uk-margin-small-bottom"
+                        type="text" name="value" id="idvalue" autocomplete="off" placeholder="Value"
+                        style="color: whitesmoke">
                 </div>
-                <input id="idbutton" type="submit" class="uk-button uk-button-default uk-align-center"
-                    name="approve" value="submit" onclick="return empty()">
+                <input id="idbutton" type="submit" class="uk-button uk-button-default uk-align-center" name="approve"
+                    value="submit" onclick="return empty()">
 
-                </div>
+            </div>
+        </form>
     </div>
 
-    <div id="results" class="uk-section uk-section-default uk-section-xsmall uk-text-left uk-width-1-1 uk-width-2-3@m uk-align-center uk-box-shadow-medium">
+    <div id="results"
+        class="uk-section uk-section-default uk-section-xsmall uk-text-left uk-width-1-1 uk-width-2-3@m uk-align-center uk-box-shadow-medium">
         <ol id="ol" class="uk-text-break uk-margin-small-left uk-margin-small-right uk-animation-shake">
             {% for tag in list_tag %}
             <li>{{ tag }}</li>
@@ -56,19 +63,27 @@
             {% endfor %}
         </ol>
     </div>
-    </form>
-    <span class="uk-label uk-label-success uk-position-fixed uk-position-bottom-right" style="background-color: #598392;">{{ used_tags }}</span>
-    <div id="help" class="uk-section uk-section-default uk-section-xsmall uk-width-1-1 uk-width-2-3@m uk-align-center uk-text-center" style="background-color: #e9ecef;">
+
+    <span class="uk-label uk-label-success uk-position-fixed uk-position-bottom-right"
+        style="background-color: #598392;">{{ used_tags }}</span>
+    <div id="help"
+        class="uk-section uk-section-default uk-section-xsmall uk-width-1-1 uk-width-2-3@m uk-align-center uk-text-center"
+        style="background-color: #e9ecef;">
         <div class="uk-text-medium uk-align-center uk-margin-small">
-            <u>About <b>HTML Scraper</b></u></div>
+            <u>About <b>HTML Scraper</b></u>
+        </div>
         <div class="uk-text-medium uk-align-center uk-margin-small">
-            <b>URL</b>: Searching dead links</div>
+            <b>URL</b>: Searching dead links
+        </div>
         <div class="uk-text-medium uk-align-center uk-margin-small">
-            <b>Tag</b>: [@]</div>
+            <b>Tag</b>: [@]
+        </div>
         <div class="uk-text-medium uk-align-center uk-margin-small">
-            <b>Attribute</b>: [!/@/#/$]</div>
+            <b>Attribute</b>: [!/@/#/$]
+        </div>
         <div class="uk-text-medium uk-align-center uk-margin-small">
-            <b>Value</b>: [@]</div>
+            <b>Value</b>: [@]
+        </div>
         <div class="uk-text-medium uk-align-center uk-margin-small">
             ! - dead links / @ - texts / # - hyperlinks / $ - values</div>
     </div>
@@ -120,7 +135,7 @@
         document.addEventListener("submit", () => {
             let value = field1.value
             let value2 = field2.value;
-            if (value.length == 0 || value2.endsWith("!") ) {
+            if (value.length == 0 || value2.endsWith("!")) {
                 home.innerText = "Searching dead links...";
             } else {
                 home.innerText = "Scraping...";
